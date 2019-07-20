@@ -23,25 +23,32 @@ HornyBeasts.allHornyBeasts = [];
 HornyBeasts.optionsArry =[];
 
 HornyBeasts.prototype.render = function() {
-  $('main').append('<section class="clone"></section>');
-  let hornyBeastClone = $('section[class="clone"]');
+  // $('main').append('<section class="clone"></section>');
+  // let hornyBeastClone = $('section[class="clone"]');
 
-  let hornyBeastHtml = $('#hornyBeast-template').html();
+  // let hornyBeastHtml = $('#handlebarsTemp').html();
 
-  hornyBeastClone.html(hornyBeastHtml);
+  // hornyBeastClone.html(hornyBeastHtml);
 
-  hornyBeastClone.find('h2').text(this.title);
-  hornyBeastClone.find('img').attr('src', this.image_url).attr('alt', 'alt text');
-  hornyBeastClone.find('p').text(this.description);
-  hornyBeastClone.removeClass('clone');
-  hornyBeastClone.addClass('picSection');
-  hornyBeastClone.attr('id',this.keyword);
+  // hornyBeastClone.find('h2').text(this.title);
+  // hornyBeastClone.find('img').attr('src', this.image_url).attr('alt', 'alt text');
+  // hornyBeastClone.find('p').text(this.description);
+  // hornyBeastClone.removeClass('clone');
+  // hornyBeastClone.addClass('picSection');
+  // hornyBeastClone.attr('id',this.keyword);
+
+  let template = $('#handlebarsTemp').html();
+  let templateRender = Handlebars.compile(template);
+  console.log(templateRender);
+  console.log(this);
 
   if(HornyBeasts.optionsArry.includes(this.keyword)){
     console.log('im already alive');
   }else{HornyBeasts.optionsArry.push(this.keyword);
     $('select').append(`<option value=${this.keyword}>${this.keyword}</option>`)
   }
+  return templateRender(this);
+
 }
 
 
@@ -59,8 +66,9 @@ HornyBeasts.readJson = () => {
 };
 
 HornyBeasts.loadHornyBeasts = () => {
-  HornyBeasts.allHornyBeasts.forEach(hornyBeast => hornyBeast.render());
+  HornyBeasts.allHornyBeasts.forEach(hornyBeast => $('#hornyBeast-template').append(hornyBeast.render()));
 };
+
 
 
 
@@ -73,3 +81,6 @@ $('select').on('change', function(){
   $(`section[id = "${$selection}"]`).show();
   console.log($(`section[id = "${$selection}"]`))
 });
+
+// $('#page2').on('click', function(){
+// }

@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/modules.css">
     <link rel="stylesheet" href="./css/themes.css">
+   
+    <!-- Handlebars Template -->
+    <script id="handlebarsTemp" type="text/x-handlebars-template">
+      <section class="picSection" id="{{keyword}}">
+        <h2>{{title}}</h2>
+        <img src="{{image_url}}" alt="{{description}}">
+        <p>{{description}}</p>
+      </section>  
+    </script>
+  
   </head>
   <body>
     <header>
@@ -17,6 +27,8 @@
       <select>
         <option value="default">Filter by Keyword</option>
       </select>
+      <input type="radio" id="page1"> </input>
+      <input type="radio" id="page1"> </input>
     </header>
     <main>
       <section id="hornyBeast-template">
@@ -28,7 +40,16 @@
     <footer>
       &copy; 2018 Code Fellows
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="./js/app.js" type="text/JavaScript"></script>
   </body>
 </html>
+
+<!-- 
+on click of radio button
+hide all images
+iterate through page 2 jason with handlebars to create new hornybeasts
+
+
+ -->
