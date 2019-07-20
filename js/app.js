@@ -52,9 +52,10 @@ HornyBeasts.prototype.render = function() {
 }
 
 
-HornyBeasts.readJson = () => {
+HornyBeasts.readJson = (page) => {
   console.log(HornyBeasts.allHornyBeasts);
-  $.get('./page-1.json','json')
+
+  $.get(page,'json')
     .then(data => {
       console.log(data);
       data.forEach(item => {
@@ -72,14 +73,13 @@ HornyBeasts.loadHornyBeasts = () => {
 
 
 
-
-$(() => HornyBeasts.readJson());
+for
+$(() => HornyBeasts.readJson(/*Json File from affay */));
 
 $('select').on('change', function(){
   let $selection = $(this).val();
   $('section').hide();
   $(`section[id = "${$selection}"]`).show();
-  console.log($(`section[id = "${$selection}"]`))
 });
 
 // $('#page2').on('click', function(){
