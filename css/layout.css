@@ -1,0 +1,39 @@
+
+header h1{
+    margin: 2%;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.picSection{
+    float: left;
+    height: 250px;
+    width: 250px;
+    margin-left: 8%;
+    margin-bottom: 250px;
+    left: 30%;
+    text-align: center;
+    
+}
+.picSection h2{
+    display: inline;
+}
+.picSection p{
+    font-family: 'Special Elite', cursive;
+    display: inline;
+}
+
+
+
+section img{
+    max-width: 250px;
+    max-height: 250px;
+    margin: 10px;
+}
+
+section p {
+    overflow: auto;
+}
+
+select{
+    width: 150px;
+}
