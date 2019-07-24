@@ -12,6 +12,8 @@ image_url": "http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdT
       "horns": 1
 */
 
+let fileName = "../page-1.json";
+
 function HornyBeasts (hornyBeast){
   this.image_url = hornyBeast.image_url;
   this.title = hornyBeast.title;
@@ -73,14 +75,26 @@ HornyBeasts.loadHornyBeasts = () => {
 
 
 
-for
-$(() => HornyBeasts.readJson(/*Json File from affay */));
+//for Loop
+$(() => HornyBeasts.readJson(fileName));
+
+// $('select').on('change', function(){
+//   let $selection = $(this).val();
+//   $('section').hide();
+//   $(`section[id ="${$selection}"]`).show();
+//   console.log($(`section[id ="${$selection}"]`).show();)
+//   console.log($selection)
+//   console.log( typeof $selection)
+// });
 
 $('select').on('change', function(){
   let $selection = $(this).val();
   $('section').hide();
-  $(`section[id = "${$selection}"]`).show();
+  $(`section[class ="section.${$selection}"]`).show();
+  // console.log($(`section[class ="${$selection}"]`)[0].className);
+  console.log($(`section[class ="section.${$selection}"]`));
+  console.log($selection)
+  // console.log( typeof $selection)
 });
-
 // $('#page2').on('click', function(){
 // }

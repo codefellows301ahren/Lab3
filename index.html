@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/modules.css">
-    <link rel="stylesheet" href="./css/themes.css">
+    <link rel="stylesheet" href="./css/module.css">
+    <link rel="stylesheet" href="./css/theme.css">
    
     <!-- Handlebars Template -->
     <script id="handlebarsTemp" type="text/x-handlebars-template">
-      <section class="picSection" id="{{keyword}}">
+      <section class="{{keyword}}">
         <h2>{{title}}</h2>
         <img src="{{image_url}}" alt="{{description}}">
         <p>{{description}}</p>
@@ -27,8 +27,8 @@
       <select>
         <option value="default">Filter by Keyword</option>
       </select>
-      <input type="radio" id="page1"> </input>
-      <input type="radio" id="page1"> </input>
+      <button type="submit" id="page1"> </button>
+      <button type="submit" id="page2"> </button>
     </header>
     <main>
       <section id="hornyBeast-template">
