@@ -59,6 +59,7 @@ $('#page1').click(function(){
   console.log(`clicky clicky!`);
   $('main section').remove();
   $('option').remove();
+  $('select').append('<option> Filter by Keyword </option>');
   HornyBeasts.allHornyBeasts = [];
   HornyBeasts.optionsArry =[];
   fileName = '../page-1.json';
@@ -70,6 +71,7 @@ $('#page2').click(function(){
   console.log(`clicky clicky!`);
   $('main section').remove();
   $('option').remove();
+  $('select').append('<option> Filter by Keyword </option>');
   HornyBeasts.allHornyBeasts = [];
   HornyBeasts.optionsArry =[];
   fileName = '../page-2.json';
