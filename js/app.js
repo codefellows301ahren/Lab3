@@ -1,17 +1,8 @@
 'use strict';
 
-/* get imgs and display on page
-gets files from json using $.get()
+let fileName = '../page-1.json';
 
-create an object that has genearlly the below props
-
-image_url": "http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdTZ6M7z8/s1600/Unicorn_and_Narwhal_by_dinglehopper.jpg",
-      "title": "UniWhal",
-      "description": "A unicorn and a narwhal nuzzling their horns",
-      "keyword": "narwhal",
-      "horns": 1
-*/
-
+//Constructor Function
 function HornyBeasts (hornyBeast){
   this.image_url = hornyBeast.image_url;
   this.title = hornyBeast.title;
@@ -19,28 +10,15 @@ function HornyBeasts (hornyBeast){
   this.keyword = hornyBeast.keyword;
   this.horns = hornyBeast.horns;
 }
+//Arrays to help with appending and holding objects
 HornyBeasts.allHornyBeasts = [];
 HornyBeasts.optionsArry =[];
 
+//renders handlebars template to the DOM
 HornyBeasts.prototype.render = function() {
-  // $('main').append('<section class="clone"></section>');
-  // let hornyBeastClone = $('section[class="clone"]');
-
-  // let hornyBeastHtml = $('#handlebarsTemp').html();
-
-  // hornyBeastClone.html(hornyBeastHtml);
-
-  // hornyBeastClone.find('h2').text(this.title);
-  // hornyBeastClone.find('img').attr('src', this.image_url).attr('alt', 'alt text');
-  // hornyBeastClone.find('p').text(this.description);
-  // hornyBeastClone.removeClass('clone');
-  // hornyBeastClone.addClass('picSection');
-  // hornyBeastClone.attr('id',this.keyword);
-
   let template = $('#handlebarsTemp').html();
   let templateRender = Handlebars.compile(template);
-  console.log(templateRender);
-  console.log(this);
+  
 
   if(HornyBeasts.optionsArry.includes(this.keyword)){
     console.log('im already alive');
@@ -48,16 +26,17 @@ HornyBeasts.prototype.render = function() {
     $('select').append(`<option value=${this.keyword}>${this.keyword}</option>`)
   }
   return templateRender(this);
-
 }
 
+// helperfunction that calls a new element to the dom for each object.
+HornyBeasts.loadHornyBeasts = () => {
+  HornyBeasts.allHornyBeasts.forEach(hornyBeast => $('#hornyBeast-template').append(hornyBeast.render()));
+};
 
+//creates a new oject for each element/object in the Json file that is fed as an argument
 HornyBeasts.readJson = (page) => {
-  console.log(HornyBeasts.allHornyBeasts);
-
   $.get(page,'json')
     .then(data => {
-      console.log(data);
       data.forEach(item => {
         HornyBeasts.allHornyBeasts.push( new HornyBeasts(item))
       });
@@ -66,21 +45,39 @@ HornyBeasts.readJson = (page) => {
     .then(HornyBeasts.loadHornyBeasts);
 };
 
-HornyBeasts.loadHornyBeasts = () => {
-  HornyBeasts.allHornyBeasts.forEach(hornyBeast => $('#hornyBeast-template').append(hornyBeast.render()));
-};
 
-
-
-
-for
-$(() => HornyBeasts.readJson(/*Json File from affay */));
-
+// toggles beasts on and off based on view mode.
 $('select').on('change', function(){
   let $selection = $(this).val();
   $('section').hide();
   $(`section[id = "${$selection}"]`).show();
 });
 
-// $('#page2').on('click', function(){
-// }
+
+//Handles Click Event on Page 1 removes all previously generated DOM elements, then clears the corresponding arrays and finally generates new objects to the arrays and appends to the DOM
+$('#page1').click(function(){
+  console.log(`clicky clicky!`);
+  $('main section').remove();
+  $('option').remove();
+  HornyBeasts.allHornyBeasts = [];
+  HornyBeasts.optionsArry =[];
+  fileName = '../page-1.json';
+  $(() => HornyBeasts.readJson(fileName));
+});
+
+//Handles Click Event on Page 2 removes all previously generated DOM elements, then clears the corresponding arrays and finally generates new objects to the arrays and appends to the DOM
+$('#page2').click(function(){
+  console.log(`clicky clicky!`);
+  $('main section').remove();
+  $('option').remove();
+  HornyBeasts.allHornyBeasts = [];
+  HornyBeasts.optionsArry =[];
+  fileName = '../page-2.json';
+  $(() => HornyBeasts.readJson(fileName));
+});
+
+// Makes all the things run....Majics!
+$(() => HornyBeasts.readJson(fileName));
+
+
+
