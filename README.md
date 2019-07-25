@@ -32,9 +32,9 @@
 
 ##Start time: __12:15___
 
-##Finish time: _____
+##Finish time: ___12:45__
 
-##Actual time needed to complete: _____
+##Actual time needed to complete: ___30min__
 
 
 
