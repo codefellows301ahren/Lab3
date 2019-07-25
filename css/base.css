@@ -9,11 +9,18 @@ header{
     text-align: center;
 }
 
+header button{
+    width: 150px;
+}
+
 main{
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 5%;
-    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+section{
+    display: flex;
+    justify-content: space-around;
 }
 
 footer{

@@ -24,11 +24,17 @@
   <body>
     <header>
       <h1>The Gallery of Horns</h1>
-      <select>
+      <select id="filter">
         <option value="default">Filter by Keyword</option>
+      </select>
+      <select id="sort">
+        <option value="def">Sort by</option>
+        <option value = title>Title</option>
+        <option value = horns>Horns</option>
       </select>
       <button type="submit" id="page1"> Some Beasts </button>
       <button type="submit" id="page2"> More Beasts </button>
+
     </header>
     <main id="hornyBeast-template">
         <h2></h2>
@@ -44,11 +50,3 @@
     <script src="./js/app.js" type="text/JavaScript"></script>
   </body>
 </html>
-
-<!-- 
-on click of radio button
-hide all images
-iterate through page 2 jason with handlebars to create new hornybeasts
-
-
- -->
